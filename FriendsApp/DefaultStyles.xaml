@@ -1,0 +1,43 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <!-- Базовые значения -->
+    <sys:Double x:Key="DefaultValueMargin">10</sys:Double>
+    <sys:Double x:Key="DefaultValuePadding">5</sys:Double>
+    <sys:Double x:Key="DefaultValueBorder">1</sys:Double>
+    <sys:Double x:Key="DefaultValueFontSize">14</sys:Double>
+    <!-- -->
+    
+    <!-- Значения по умолчанию на основе базовых значений -->
+    <!-- Margin & Padding -->
+    <Thickness x:Key="PaddingDefault" 
+               Bottom="{StaticResource DefaultValuePadding}"
+               Left="{StaticResource DefaultValuePadding}"
+               Right="{StaticResource DefaultValuePadding}"
+               Top="{StaticResource DefaultValuePadding}"/>
+    <Thickness x:Key="MarginDefault"
+               Bottom="{StaticResource DefaultValueMargin}"
+               Left="{StaticResource DefaultValueMargin}"
+               Right="{StaticResource DefaultValueMargin}"
+               Top="{StaticResource DefaultValueMargin}"/>
+    
+    <!-- Border -->
+    <Thickness x:Key="BorderDefault" 
+               Bottom="{StaticResource DefaultValueBorder}" 
+               Left="{StaticResource DefaultValueBorder}" 
+               Right="{StaticResource DefaultValueBorder}" 
+               Top="{StaticResource DefaultValueBorder}"/>
+    <SolidColorBrush x:Key="BorderColor" 
+                     Color="DarkGreen"/>
+    
+    <!-- Font & Text -->
+    <FontWeight x:Key="FontWeightDefault">Regular</FontWeight>
+    
+    <SolidColorBrush x:Key="ColorMajor" Color="Brown"/>
+    <SolidColorBrush x:Key="ColorMinor" Color="Blue"/>
+    <!-- -->
+    
+    <SolidColorBrush x:Key="ColorForegroundButton" Color="White"/>
+    <SolidColorBrush x:Key="ColorBackgroundButton" Color="DarkMagenta"/>
+    
+</ResourceDictionary>
