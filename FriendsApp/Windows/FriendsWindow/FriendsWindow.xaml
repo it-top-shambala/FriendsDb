@@ -16,6 +16,8 @@
     <Window.InputBindings>
         <KeyBinding Key="Escape" 
                     Command="Close"/>
+        <MouseBinding MouseAction="MiddleDoubleClick" 
+                      Command="Close"/>
     </Window.InputBindings>
     
     <WrapPanel x:Name="Panel"/>
