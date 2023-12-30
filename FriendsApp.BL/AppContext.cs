@@ -19,4 +19,27 @@ public class AppContext
             .Select(Mapper.MapPersonDALToPersonBL)
             .ToList();
     }
+
+    public bool Update(Person person)
+    {
+        var personDal = _db.Persons.FirstOrDefault(p => p.Id == person.Id);
+
+        if (personDal is null) return false;
+        
+        var converterPerson = Mapper.MapPersonBLToPersonDAL(person);
+        personDal.LastName = converterPerson.LastName;
+        personDal.FirstName = converterPerson.FirstName;
+        personDal.DateOfBirth = converterPerson.DateOfBirth;
+        
+        try
+        {
+            _db.SaveChanges();
+        }
+        catch (Exception)
+        {
+            return false;
+        }
+        
+        return true;
+    }
 }

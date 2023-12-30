@@ -12,4 +12,15 @@ public static class Mapper
             DateOfBirth = person.DateOfBirth
         };
     }
+    
+    public static DAL.Models.Person MapPersonBLToPersonDAL(BL.Models.Person person)
+    {
+        return new DAL.Models.Person()
+        {
+            Id = person.Id,
+            LastName = person.LastName,
+            FirstName = person.FirstName,
+            DateOfBirth = person.DateOfBirth
+        };
+    }
 }

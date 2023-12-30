@@ -1,0 +1,75 @@
+﻿<Window x:Class="FriendsApp.MVVM.Windows.MainWindow.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:FriendsApp.MVVM.WindowModels"
+        xmlns:local="clr-namespace:FriendsApp.MVVM"
+        mc:Ignorable="d"
+        Title="{StaticResource AppTitle}" 
+        Height="350" Width="600">
+    
+    <Window.DataContext>
+        <vm:MainWindowWindowModel/>
+    </Window.DataContext>
+    
+    <Window.InputBindings>
+        <KeyBinding Key="S" Modifiers="Control" 
+                    Command="{Binding CommandSave}"/>
+        <KeyBinding Key="Escape"
+                    Command="{Binding CommandClear}"/>
+    </Window.InputBindings>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        
+        <ListView Grid.Column="0"
+                  ItemsSource="{Binding Persons}"
+                  SelectedItem="{Binding SelectedPerson}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Фамилия" 
+                                    DisplayMemberBinding="{Binding LastName}"/>
+                    <GridViewColumn Header="Имя" 
+                                    DisplayMemberBinding="{Binding FirstName}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        
+        <StackPanel Grid.Column="1">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="_Фамилия"
+                           Target="{Binding ElementName=InputLastName}"/>
+                    <TextBox x:Name="InputLastName"
+                             Text="{Binding LastName, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="_Имя"
+                           Target="{Binding ElementName=InputFirstName}"/>
+                    <TextBox x:Name="InputFirstName"
+                             Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+                
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="_Дата рождения"
+                           Target="{Binding ElementName=InputDateOfBirth}"/>
+                    <DatePicker x:Name="InputDateOfBirth" 
+                                IsDropDownOpen="True" 
+                                SelectedDateFormat="Short"
+                                SelectedDate="{Binding DateOfBirth}"/>
+                </StackPanel>
+            </StackPanel>
+            
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Сохранить"
+                        Command="{Binding CommandSave}"/>
+                <Button Content="Очистить"
+                        Command="{Binding CommandClear}"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
